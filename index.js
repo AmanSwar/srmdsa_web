@@ -84,11 +84,33 @@
 
 import express from "express";
 import bodyParser from "body-parser";
+import helmet from "helmet";
 
 const app = express();
+
+// Use helmet middleware to set security headers, including CSP
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        defaultSrc: ["'self'", "https://vercel.live"], // Allow your domain and Vercel's domain
+        scriptSrc: ["'self'", "https://vercel.live"],  // Allow scripts from self and Vercel
+        styleSrc: ["'self'", "'unsafe-inline'"],       // Allow inline styles (if needed)
+        // You can add more CSP directives as needed (e.g., imgSrc, fontSrc, etc.)
+      },
+    },
+    crossOriginEmbedderPolicy: false,  // Disable cross-origin restrictions (if required)
+  })
+);
+
+// Serve static files from the "public" directory
 app.use(express.static("public"));
+
+// Body parser middleware for form data
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Routes
 app.get("/", (req, res) => {
     res.render("home.ejs");
 });
@@ -161,5 +183,5 @@ app.get("/desstack", (req, res) => {
     res.render("partials/stack/des.ejs");
 });
 
-// Remove app.listen(), export the app
+// Export the app for serverless deployment (Vercel)
 export default app;
