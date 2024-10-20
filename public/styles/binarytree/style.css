@@ -1,0 +1,126 @@
+/* General styles for dark theme */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header styles */
+header {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 100%;
+}
+
+h1 {
+    color: #0084ff;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin: 0;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #0084ff, 0 0 20px #0084ff;
+    }
+    to {
+        text-shadow: 0 0 20px #0084ff, 0 0 40px #0084ff;
+    }
+}
+
+/* Input and button controls */
+#controls {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+input, button {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+input {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #0084ff;
+    width: 180px;
+    text-align: center;
+}
+
+input:focus {
+    box-shadow: 0 0 10px #0084ff;
+}
+
+button {
+    background-color: #0084ff;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0066cc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tree visualization container */
+#treeContainer {
+    margin-top: 40px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+canvas {
+    background-color: #2a2a2a;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 2px solid #0084ff;
+}
+
+/* Button styling for reset and insert */
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add hover effects to the node visuals */
+canvas:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* For small screens, make the layout responsive */
+@media (max-width: 600px) {
+    #controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    canvas {
+        width: 90%;
+    }
+}

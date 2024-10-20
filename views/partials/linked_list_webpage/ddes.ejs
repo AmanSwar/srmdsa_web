@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Doubly Linked List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 20px;
+            line-height: 1.8;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p, ul, li {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        code {
+            background-color: #e7f3ff;
+            color: #2c3e50;
+            padding: 3px 7px;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .matrix {
+            display: inline-block;
+            margin-right: 40px;
+            text-align: center;
+        }
+
+        .matrix p {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        h2 {
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        /* Code Section */
+        #code-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #code-section h2 {
+            color: #2980b9;
+        }
+
+        /* Button Styling */
+        a {
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Monaco editor style */
+        #editor {
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .matrix {
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            table {
+                margin: 0 auto;
+            }
+
+            body {
+                margin: 10px;
+            }
+        }
+    </style><style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 20px;
+            line-height: 1.8;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p, ul, li {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        code {
+            background-color: #e7f3ff;
+            color: #2c3e50;
+            padding: 3px 7px;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .matrix {
+            display: inline-block;
+            margin-right: 40px;
+            text-align: center;
+        }
+
+        .matrix p {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        h2 {
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        /* Code Section */
+        #code-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #code-section h2 {
+            color: #2980b9;
+        }
+
+        /* Button Styling */
+        a {
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Monaco editor style */
+        #editor {
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .matrix {
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            table {
+                margin: 0 auto;
+            }
+
+            body {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Doubly Linked List</h1>
+
+    <h2>Structure of a Doubly Linked List</h2>
+    <p>A doubly linked list consists of nodes that contain:</p>
+    <ul>
+        <li><strong>Data Field:</strong> Stores the actual data value.</li>
+        <li><strong>Next Pointer:</strong> Points to the next node in the sequence.</li>
+        <li><strong>Previous Pointer:</strong> Points to the previous node in the sequence.</li>
+    </ul>
+    <p>The first node is called the <strong>head</strong>, and the last node is referred to as the <strong>tail</strong>.</p>
+
+    <h2>Advantages of Doubly Linked Lists</h2>
+    <ul>
+        <li><strong>Bidirectional Traversal:</strong> Allows navigation in both directions.</li>
+        <li><strong>Easier Deletion:</strong> Deleting a node is more straightforward.</li>
+        <li><strong>Insertion Flexibility:</strong> Nodes can be inserted at any position easily.</li>
+    </ul>
+
+    <h2>Disadvantages of Doubly Linked Lists</h2>
+    <ul>
+        <li><strong>Increased Memory Usage:</strong> Requires more memory for an additional pointer.</li>
+        <li><strong>Complexity:</strong> Implementation is more complex due to two pointers.</li>
+    </ul>
+
+    <h2>Operations on Doubly Linked Lists</h2>
+    <p>Fundamental operations include:</p>
+    <ul>
+        <li><strong>Insertion:</strong>
+            <ul>
+                <li>At the Beginning</li>
+                <li>At the End</li>
+                <li>At a Specific Position</li>
+            </ul>
+        </li>
+        <li><strong>Deletion:</strong>
+            <ul>
+                <li>From the Beginning</li>
+                <li>From the End</li>
+                <li>From a Specific Position</li>
+            </ul>
+        </li>
+        <li><strong>Traversal:</strong>
+            <ul>
+                <li>Forward traversal from the head</li>
+                <li>Backward traversal from the tail</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Applications of Doubly Linked Lists</h2>
+    <p>Common applications include:</p>
+    <ul>
+        <li><strong>Browser History:</strong> Navigating back and forth between pages.</li>
+        <li><strong>Music Playlist Management:</strong> Skipping to the next or previous track.</li>
+        <li><strong>Implementation of Deques:</strong> Efficient addition and removal of elements from both ends.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Doubly linked lists offer a powerful way to manage data dynamically, providing flexibility and efficiency in various computing tasks.</p>
+    <div id="code-section">
+        <h2>Code Editor</h2>
+        <div id="editor" style="height: 400px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+        <script src="styles/linked_list/js/deditor.js"></script>
+    </div>
+    <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+        <a href="/linkedlist">Visualization</a>
+    </div>
+</body>
+</html>
